@@ -80,20 +80,26 @@ def runapi(apilist,a):
             print("pass")
             pass
 
+def initData():
 #一次性获取access_token，降低获取率
-for a in range(1, int(app_num)+1):
-    if a == 1: 
-        client_id=os.getenv('CLIENT_ID')
-        client_secret=os.getenv('CLIENT_SECRET')
-        ms_token=os.getenv('MS_TOKEN')
-        access_token_list[a-1]=getmstoken(ms_token,client_id,client_secret)
-    else:
-        print(a)
-        client_id=os.getenv('CLIENT_ID_'+str(a))
-        client_secret=os.getenv('CLIENT_SECRET_'+str(a))
-        ms_token=os.getenv('MS_TOKEN_'+str(a))
-        print(str(a),client_id,client_secret,ms_token)
-        access_token_list[a-1]=getmstoken(ms_token,client_id,client_secret)
+    client_id=os.getenv('CLIENT_ID')
+    client_secret=os.getenv('CLIENT_SECRET')
+    ms_token=os.getenv('MS_TOKEN')
+    access_token_list[0]=getmstoken(ms_token,client_id,client_secret)
+    if int(app_num)>1:
+        client_id=os.getenv('CLIENT_ID_2')
+        client_secret=os.getenv('CLIENT_SECRET_2')
+        ms_token=os.getenv('MS_TOKEN_2')
+        print(client_id,client_secret,ms_token)
+        access_token_list[1]=getmstoken(ms_token,client_id,client_secret)
+    if int(app_num)>2:
+        client_id=os.getenv('CLIENT_ID_3')
+        client_secret=os.getenv('CLIENT_SECRET_3')
+        ms_token=os.getenv('MS_TOKEN_3')
+        print(client_id,client_secret,ms_token)
+        access_token_list[2]=getmstoken(ms_token,client_id,client_secret)
+
+initData()
 
 #随机api序列
 fixed_api=[0,1,5,6,20,21]

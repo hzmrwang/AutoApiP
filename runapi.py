@@ -46,7 +46,7 @@ api_list = [r'https://graph.microsoft.com/v1.0/me/',
             ]
 
 #微软refresh_token获取
-def getmstoken(ms_token):
+def getmstoken(ms_token,client_id,client_secret):
     headers={'Content-Type':'application/x-www-form-urlencoded'
             }
     data={'grant_type': 'refresh_token',
@@ -86,12 +86,12 @@ for a in range(1, int(app_num)+1):
         client_id=os.getenv('CLIENT_ID')
         client_secret=os.getenv('CLIENT_SECRET')
         ms_token=os.getenv('MS_TOKEN')
-        access_token_list[a-1]=getmstoken(ms_token)
+        access_token_list[a-1]=getmstoken(ms_token,client_id,client_secret)
     else:
         client_id=os.getenv('CLIENT_ID_'+str(a))
         client_secret=os.getenv('CLIENT_SECRET_'+str(a))
         ms_token=os.getenv('MS_TOKEN_'+str(a))
-        access_token_list[a-1]=getmstoken(ms_token)
+        access_token_list[a-1]=getmstoken(ms_token,client_id,client_secret)
 
 #随机api序列
 fixed_api=[0,1,5,6,20,21]

@@ -91,7 +91,7 @@ for a in range(1, int(app_num)+1):
         client_id=os.getenv('CLIENT_ID_'+str(a))
         client_secret=os.getenv('CLIENT_SECRET_'+str(a))
         ms_token=os.getenv('MS_TOKEN_'+str(a))
-        print(ms_token)
+        print(str(a),client_id,client_secret,ms_token)
         access_token_list[a-1]=getmstoken(ms_token,client_id,client_secret)
 
 #随机api序列
